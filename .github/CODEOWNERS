@@ -1,0 +1,9 @@
+# Shared foundation: changes need organizer review.
+/src/app/    @campus-os/organizers
+/src/core/   @campus-os/organizers
+/src/theme/  @campus-os/organizers
+/src/ui/     @campus-os/organizers
+/e2e/        @campus-os/organizers
+
+# Feature tracks: each team owns its own folder. Add one line per track:
+# /src/tracks/lost-and-found/  @campus-os/team-7

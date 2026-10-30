@@ -1,0 +1,53 @@
+{
+  "name": "campus-os-frontend",
+  "private": true,
+  "version": "1.1.2",
+  "type": "module",
+  "scripts": {
+    "predev": "node tools/ai-telemetry/paste-watcher.mjs --ensure",
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:track": "node tools/new-track.mjs --test",
+    "new-track": "node tools/new-track.mjs",
+    "preview": "vite preview",
+    "prepare": "husky",
+    "postinstall": "node tools/ai-telemetry/install-editor-ext.mjs && node tools/ai-telemetry/paste-watcher.mjs --ensure",
+    "telemetry:mock": "node tools/ai-telemetry/mock-server.mjs",
+    "telemetry:flush": "node tools/ai-telemetry/flush.mjs --verbose",
+    "telemetry:ext": "node tools/ai-telemetry/install-editor-ext.mjs",
+    "telemetry:register": "node tools/ai-telemetry/register.mjs",
+    "telemetry:audit": "node tools/ai-telemetry/audit.mjs",
+    "telemetry:watcher": "node tools/ai-telemetry/paste-watcher.mjs --status"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^7.18.5"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.64.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.8",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "@vitest/coverage-v8": "^5.0.5",
+    "husky": "^9.1.7",
+    "js-tiktoken": "^1.0.21",
+    "jsdom": "^29.1.1",
+    "oxlint": "^1.89.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}

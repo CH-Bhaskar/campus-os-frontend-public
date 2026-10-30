@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hooks": {
+    "userPromptSubmitted": [
+      { "type": "command", "command": "node tools/ai-telemetry/collectors/copilot.mjs userPromptSubmitted", "cwd": ".", "timeoutSec": 10 }
+    ],
+    "preToolUse": [
+      { "type": "command", "command": "node tools/ai-telemetry/collectors/copilot.mjs preToolUse", "cwd": ".", "timeoutSec": 10 }
+    ],
+    "postToolUse": [
+      { "type": "command", "command": "node tools/ai-telemetry/collectors/copilot.mjs postToolUse", "cwd": ".", "timeoutSec": 10 }
+    ],
+    "agentStop": [
+      { "type": "command", "command": "node tools/ai-telemetry/collectors/copilot.mjs agentStop", "cwd": ".", "timeoutSec": 10 }
+    ]
+  }
+}

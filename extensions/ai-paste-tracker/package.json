@@ -1,0 +1,20 @@
+{
+  "name": "ai-paste-tracker",
+  "displayName": "AI Paste Tracker",
+  "description": "Reports large pastes and AI inline inserts to the repo's ai-telemetry collector.",
+  "version": "0.2.0",
+  "publisher": "campus-os",
+  "private": true,
+  "engines": { "vscode": "^1.85.0" },
+  "main": "./extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "contributes": {
+    "configuration": {
+      "title": "AI Paste Tracker",
+      "properties": {
+        "aiPasteTracker.minChars": { "type": "number", "default": 120, "description": "Single inserts at least this long are reported." },
+        "aiPasteTracker.minLines": { "type": "number", "default": 3, "description": "Single inserts spanning at least this many lines are reported." }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus OS</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      // Keep the key in sync with THEME_STORAGE_KEY in src/theme/ThemeProvider.tsx.
+      try {
+        var mode = localStorage.getItem('campus-os:theme')
+        if (mode === 'light' || mode === 'dark') document.documentElement.setAttribute('data-theme', mode)
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "telemetry": {
+    "enabled": true,
+    "target": "local",
+    "otlpEndpoint": "https://43-204-210-72.sslip.io",
+    "otlpProtocol": "http",
+    "logPrompts": false
+  },
+  "hooks": {
+    "BeforeAgent": [
+      { "hooks": [{ "name": "ai-telemetry", "type": "command", "command": "node \"$GEMINI_PROJECT_DIR/tools/ai-telemetry/collectors/gemini.mjs\"", "timeout": 10000 }] }
+    ],
+    "BeforeTool": [
+      { "matcher": "write_file|replace", "hooks": [{ "name": "ai-telemetry", "type": "command", "command": "node \"$GEMINI_PROJECT_DIR/tools/ai-telemetry/collectors/gemini.mjs\"", "timeout": 10000 }] }
+    ],
+    "AfterTool": [
+      { "matcher": "write_file|replace", "hooks": [{ "name": "ai-telemetry", "type": "command", "command": "node \"$GEMINI_PROJECT_DIR/tools/ai-telemetry/collectors/gemini.mjs\"", "timeout": 10000 }] }
+    ],
+    "AfterAgent": [
+      { "hooks": [{ "name": "ai-telemetry", "type": "command", "command": "node \"$GEMINI_PROJECT_DIR/tools/ai-telemetry/collectors/gemini.mjs\"", "timeout": 10000 }] }
+    ]
+  }
+}

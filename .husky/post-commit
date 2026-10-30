@@ -1,0 +1,1 @@
+node tools/ai-telemetry/git/post-commit.mjs

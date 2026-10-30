@@ -1,0 +1,16 @@
+{
+  "ai-telemetry": {
+    "PreInvocation": [
+      { "type": "command", "command": "node ../tools/ai-telemetry/collectors/antigravity.mjs PreInvocation", "timeout": 10 }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": ".*(write|replace|edit).*",
+        "hooks": [{ "type": "command", "command": "node ../tools/ai-telemetry/collectors/antigravity.mjs PostToolUse", "timeout": 10 }]
+      }
+    ],
+    "Stop": [
+      { "type": "command", "command": "node ../tools/ai-telemetry/collectors/antigravity.mjs Stop", "timeout": 10 }
+    ]
+  }
+}

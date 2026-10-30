@@ -1,0 +1,137 @@
+/*
+ * Campus OS design tokens: the single source of brand values.
+ *
+ * To rebrand, change the primitives below. Components and tracks must only use
+ * the semantic tokens (--color-*, --space-*, ...), never raw hex values.
+ */
+
+:root {
+  /* Primitives */
+  --purple-50: #f6edff;
+  --purple-100: rgba(170, 59, 255, 0.1);
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #aa3bff;
+  --purple-600: #8a22e0;
+  --purple-700: #6e14b8;
+
+  --gray-0: #ffffff;
+  --gray-50: #f9f8fb;
+  --gray-100: #f4f3ec;
+  --gray-200: #e5e4e7;
+  --gray-500: #6b6375;
+  --gray-900: #08060d;
+
+  --night-900: #16171d;
+  --night-800: #1f2028;
+  --night-700: #2e303a;
+  --night-300: #9ca3af;
+  --night-50: #f3f4f6;
+
+  --red-600: #c62828;
+  --red-300: #f87171;
+  --green-600: #1b7f3b;
+  --green-300: #4ade80;
+
+  /* Semantic colors: light */
+  --color-bg: var(--gray-50);
+  --color-surface: var(--gray-0);
+  --color-surface-muted: var(--gray-100);
+  --color-text: var(--gray-900);
+  --color-text-muted: var(--gray-500);
+  --color-border: var(--gray-200);
+  --color-primary: var(--purple-600);
+  --color-primary-hover: var(--purple-700);
+  --color-on-primary: var(--gray-0);
+  --color-primary-subtle: var(--purple-100);
+  --color-accent: var(--purple-500);
+  --color-danger: var(--red-600);
+  --color-success: var(--green-600);
+  --color-focus-ring: var(--purple-500);
+
+  /* Spacing (4px scale) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  /* Typography */
+  --font-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 600;
+
+  /* Elevation */
+  --shadow-sm: rgba(0, 0, 0, 0.06) 0 1px 3px, rgba(0, 0, 0, 0.04) 0 1px 2px;
+  --shadow-md:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+
+  color-scheme: light;
+}
+
+/* Semantic colors: dark (system preference unless the user forced light) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: var(--night-900);
+    --color-surface: var(--night-800);
+    --color-surface-muted: var(--night-700);
+    --color-text: var(--night-50);
+    --color-text-muted: var(--night-300);
+    --color-border: var(--night-700);
+    --color-primary: var(--purple-400);
+    --color-primary-hover: var(--purple-300);
+    --color-on-primary: var(--night-900);
+    --color-primary-subtle: rgba(192, 132, 252, 0.15);
+    --color-accent: var(--purple-400);
+    --color-danger: var(--red-300);
+    --color-success: var(--green-300);
+    --color-focus-ring: var(--purple-400);
+    --shadow-sm: rgba(0, 0, 0, 0.3) 0 1px 3px;
+    --shadow-md:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    color-scheme: dark;
+  }
+}
+
+/* Semantic colors: dark (explicit user choice) */
+:root[data-theme='dark'] {
+  --color-bg: var(--night-900);
+  --color-surface: var(--night-800);
+  --color-surface-muted: var(--night-700);
+  --color-text: var(--night-50);
+  --color-text-muted: var(--night-300);
+  --color-border: var(--night-700);
+  --color-primary: var(--purple-400);
+  --color-primary-hover: var(--purple-300);
+  --color-on-primary: var(--night-900);
+  --color-primary-subtle: rgba(192, 132, 252, 0.15);
+  --color-accent: var(--purple-400);
+  --color-danger: var(--red-300);
+  --color-success: var(--green-300);
+  --color-focus-ring: var(--purple-400);
+  --shadow-sm: rgba(0, 0, 0, 0.3) 0 1px 3px;
+  --shadow-md:
+    rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  color-scheme: dark;
+}

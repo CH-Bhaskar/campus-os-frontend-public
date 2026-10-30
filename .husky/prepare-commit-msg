@@ -1,0 +1,1 @@
+node tools/ai-telemetry/git/prepare-commit-msg.mjs "$1" "$2" "$3"

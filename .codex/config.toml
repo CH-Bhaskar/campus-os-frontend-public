@@ -1,0 +1,18 @@
+[[hooks.UserPromptSubmit]]
+[[hooks.UserPromptSubmit.hooks]]
+type = "command"
+command = 'node "$(git rev-parse --show-toplevel)/tools/ai-telemetry/collectors/codex.mjs"'
+timeout = 10
+
+[[hooks.PostToolUse]]
+matcher = "apply_patch|Edit|Write"
+[[hooks.PostToolUse.hooks]]
+type = "command"
+command = 'node "$(git rev-parse --show-toplevel)/tools/ai-telemetry/collectors/codex.mjs"'
+timeout = 10
+
+[[hooks.Stop]]
+[[hooks.Stop.hooks]]
+type = "command"
+command = 'node "$(git rev-parse --show-toplevel)/tools/ai-telemetry/collectors/codex.mjs"'
+timeout = 10
