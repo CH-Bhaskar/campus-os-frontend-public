@@ -77,7 +77,7 @@ export function ApiErrorMessage({ error }: { error: unknown }) {
   return (
     <div
       role="alert"
-      className="flex gap-3 rounded-2xl border border-red-500/25 bg-red-50 px-4 py-3.5 text-sm text-red-900 shadow-card dark:border-red-400/25 dark:bg-red-400/10 dark:text-red-200"
+      className="flex gap-3 rounded-2xl border border-red-500/25 bg-red-50 px-4 py-3.5 text-sm text-red-900 shadow-desk dark:border-red-400/25 dark:bg-red-400/10 dark:text-red-200"
     >
       <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-red-100 text-red-600 dark:bg-red-400/15 dark:text-red-300">
         <Icon name="alert" className="h-4 w-4" />

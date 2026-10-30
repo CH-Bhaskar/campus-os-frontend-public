@@ -83,7 +83,7 @@ export function DocDeskPage() {
         </div>
       </div>
       {checkingDept ? (
-        <p className="text-sm text-ink/50 dark:text-white/50">Loading your workspace…</p>
+        <p className="text-sm text-desk-ink/50 dark:text-white/50">Loading your workspace…</p>
       ) : isAdmin ? (
         <AdminView />
       ) : isStudentAffairs ? (

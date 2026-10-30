@@ -34,7 +34,7 @@ export function Modal({
 }) {
   return (
     <div
-      className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-ink/45 p-4 backdrop-blur-sm dark:bg-black/60"
+      className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-desk-ink/45 p-4 backdrop-blur-sm dark:bg-black/60"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -43,13 +43,13 @@ export function Modal({
         className={`w-full ${wide ? 'max-w-2xl' : 'max-w-lg'} p-0`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-ink/8 px-6 py-4 dark:border-white/8">
+        <div className="flex items-start justify-between gap-4 border-b border-desk-ink/8 px-6 py-4 dark:border-white/8">
           <div>
-            <h2 className="font-display text-xl font-semibold tracking-tight text-ink dark:text-white">
+            <h2 className="font-display text-xl font-semibold tracking-tight text-desk-ink dark:text-white">
               {title}
             </h2>
             {subtitle ? (
-              <p className="mt-0.5 text-sm text-ink/55 dark:text-stone-400">{subtitle}</p>
+              <p className="mt-0.5 text-sm text-desk-ink/55 dark:text-stone-400">{subtitle}</p>
             ) : null}
           </div>
           <Button variant="ghost" size="sm" onClick={onClose} aria-label="Close">
@@ -81,7 +81,7 @@ export function ConfirmModal({
 }) {
   return (
     <Modal title={title} onClose={onCancel}>
-      <div className="text-sm leading-relaxed text-ink/70 dark:text-stone-300">{body}</div>
+      <div className="text-sm leading-relaxed text-desk-ink/70 dark:text-stone-300">{body}</div>
       <div className="mt-6 flex justify-end gap-2">
         <Button variant="secondary" onClick={onCancel} disabled={busy}>
           Cancel
@@ -167,26 +167,26 @@ function Step({
         <span
           className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border-2 ${
             done
-              ? 'border-ivy-600 bg-ivy-600 text-white dark:border-ivy-400 dark:bg-ivy-400 dark:text-ivy-950'
+              ? 'border-indigo-600 bg-indigo-600 text-white dark:border-indigo-400 dark:bg-indigo-400 dark:text-indigo-950'
               : current
-                ? 'border-brass-500 bg-brass-100 text-brass-700 dark:bg-brass-400/15 dark:text-brass-300'
-                : 'border-ink/15 bg-white text-ink/30 dark:border-white/15 dark:bg-night-800 dark:text-stone-600'
+                ? 'border-amber-500 bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300'
+                : 'border-desk-ink/15 bg-white text-desk-ink/30 dark:border-white/15 dark:bg-slate-800 dark:text-stone-600'
           }`}
         >
           <Icon name={done ? 'check' : current ? 'clock' : 'chevR'} className="h-4 w-4" />
         </span>
-        <span className="w-0.5 flex-1 bg-ink/10 dark:bg-white/10" aria-hidden="true" />
+        <span className="w-0.5 flex-1 bg-desk-ink/10 dark:bg-white/10" aria-hidden="true" />
       </div>
       <div className="min-w-0 pt-1">
         <div
           className={`text-sm font-semibold ${
-            done || current ? 'text-ink dark:text-white' : 'text-ink/40 dark:text-stone-500'
+            done || current ? 'text-desk-ink dark:text-white' : 'text-desk-ink/40 dark:text-stone-500'
           }`}
         >
           {title}
         </div>
         {detail ? (
-          <div className="mt-0.5 text-[13px] leading-relaxed text-ink/55 dark:text-stone-400">
+          <div className="mt-0.5 text-[13px] leading-relaxed text-desk-ink/55 dark:text-stone-400">
             {detail}
           </div>
         ) : null}
@@ -354,7 +354,7 @@ export function ListSkeleton({ rows = 5 }: { rows?: number }) {
       {Array.from({ length: rows }).map((_, i) => (
         <div
           key={i}
-          className="h-[76px] animate-pulse rounded-2xl bg-ink/5 dark:bg-white/5"
+          className="h-[76px] animate-pulse rounded-2xl bg-desk-ink/5 dark:bg-white/5"
         />
       ))}
     </div>
@@ -364,9 +364,9 @@ export function ListSkeleton({ rows = 5 }: { rows?: number }) {
 export function DetailSkeleton() {
   return (
     <div className="animate-pulse space-y-4" aria-label="Loading">
-      <div className="h-8 w-2/3 rounded-xl bg-ink/5 dark:bg-white/5" />
-      <div className="h-40 rounded-2xl bg-ink/5 dark:bg-white/5" />
-      <div className="h-24 rounded-2xl bg-ink/5 dark:bg-white/5" />
+      <div className="h-8 w-2/3 rounded-xl bg-desk-ink/5 dark:bg-white/5" />
+      <div className="h-40 rounded-2xl bg-desk-ink/5 dark:bg-white/5" />
+      <div className="h-24 rounded-2xl bg-desk-ink/5 dark:bg-white/5" />
     </div>
   );
 }
@@ -388,7 +388,7 @@ export function PagedList<T>({
   if (paged.error)
     return (
       <Card className="p-6">
-        <div className="text-sm font-semibold text-ink dark:text-white">Couldn't load the list</div>
+        <div className="text-sm font-semibold text-desk-ink dark:text-white">Couldn't load the list</div>
         <div className="mt-3">
           <PagedError error={paged.error} onRetry={paged.reload} />
         </div>

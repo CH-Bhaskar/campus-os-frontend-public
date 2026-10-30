@@ -68,10 +68,10 @@ function QueueRow({
   const selectable = req.status === 'pending';
   return (
     <div
-      className={`rounded-2xl border bg-white shadow-card transition-all duration-200 dark:bg-night-800 ${
+      className={`rounded-2xl border bg-white shadow-desk transition-all duration-200 dark:bg-slate-800 ${
         selected
-          ? 'border-ivy-600 ring-2 ring-ivy-500/25 dark:border-ivy-400'
-          : 'border-ink/8 hover:-translate-y-px hover:shadow-lift dark:border-white/8'
+          ? 'border-indigo-600 ring-2 ring-indigo-500/25 dark:border-indigo-400'
+          : 'border-desk-ink/8 hover:-translate-y-px hover:shadow-desk-lg dark:border-white/8'
       }`}
     >
       <div className="flex items-start gap-3 p-4">
@@ -81,21 +81,21 @@ function QueueRow({
           disabled={!selectable}
           onChange={onToggle}
           title={selectable ? 'Select for bulk TAT' : 'Only pending requests can get a TAT'}
-          className="mt-1 h-4 w-4 shrink-0 cursor-pointer accent-ivy-700 disabled:cursor-not-allowed disabled:opacity-30"
+          className="mt-1 h-4 w-4 shrink-0 cursor-pointer accent-indigo-700 disabled:cursor-not-allowed disabled:opacity-30"
         />
         <button onClick={onOpen} className="min-w-0 flex-1 cursor-pointer text-left">
           <div className="flex flex-wrap items-center gap-2">
             <Avatar name={req.requested_by_name} className="h-8 w-8 text-xs" />
             <div className="min-w-0">
-              <div className="truncate text-sm font-semibold text-ink dark:text-white">
+              <div className="truncate text-sm font-semibold text-desk-ink dark:text-white">
                 {req.requested_by_name}
-                <span className="ml-2 font-normal text-ink/45 dark:text-stone-400">
+                <span className="ml-2 font-normal text-desk-ink/45 dark:text-stone-400">
                   {req.requested_by_role}
                   {req.requested_by_dept ? ` · ${req.requested_by_dept}` : ''}
                 </span>
               </div>
-              <div className="truncate text-[13px] text-ink/55 dark:text-stone-400">
-                <span className="font-medium text-ink/75 dark:text-stone-200">{req.doc_type_name}</span>
+              <div className="truncate text-[13px] text-desk-ink/55 dark:text-stone-400">
+                <span className="font-medium text-desk-ink/75 dark:text-stone-200">{req.doc_type_name}</span>
                 {' — '}
                 {req.reason}
               </div>
@@ -109,7 +109,7 @@ function QueueRow({
                 <Icon name="check" className="h-3 w-3" /> Form returned
               </Badge>
             ) : null}
-            <span className="text-xs text-ink/40 dark:text-stone-500">{toISTDate(req.created_at)}</span>
+            <span className="text-xs text-desk-ink/40 dark:text-stone-500">{toISTDate(req.created_at)}</span>
           </div>
         </button>
       </div>
@@ -193,24 +193,24 @@ function Queue({ onOpen }: { onOpen: (id: string) => void }) {
             <option value="all">All</option>
           </Select>
         </Field>
-        <label className="flex cursor-pointer items-center gap-2 pb-2.5 text-sm font-medium text-ink/70 dark:text-stone-300">
+        <label className="flex cursor-pointer items-center gap-2 pb-2.5 text-sm font-medium text-desk-ink/70 dark:text-stone-300">
           <input
             type="checkbox"
             checked={mine}
             onChange={(e) => setMine(e.target.checked)}
-            className="h-4 w-4 accent-ivy-700"
+            className="h-4 w-4 accent-indigo-700"
           />
           Only requests I filed
         </label>
-        <div className="ml-auto pb-1 text-xs text-ink/45 dark:text-stone-500">
+        <div className="ml-auto pb-1 text-xs text-desk-ink/45 dark:text-stone-500">
           Tip: tick pending requests, pick a date, hit <span className="font-semibold">Set TAT</span> — one call for up to 100.
         </div>
       </Card>
 
       {selected.size > 0 ? (
-        <Card className="border-ivy-600/30 p-4 dark:border-ivy-400/30">
+        <Card className="border-indigo-600/30 p-4 dark:border-indigo-400/30">
           <div className="flex flex-wrap items-end gap-3">
-            <div className="text-sm font-semibold text-ink dark:text-white">
+            <div className="text-sm font-semibold text-desk-ink dark:text-white">
               {selected.size} selected
             </div>
             <Field label="Expected by">
@@ -299,7 +299,7 @@ function TatForm({ req, onSaved }: { req: DocRequest; onSaved: (r: DocRequest) =
   };
 
   return (
-    <div className="rounded-xl bg-paper p-4 dark:bg-night-900">
+    <div className="rounded-xl bg-desk-bg p-4 dark:bg-slate-900">
       <div className="flex flex-wrap items-end gap-3">
         <Field label="Expected by">
           <Input type="date" value={date} min={todayISODate()} onChange={(e) => setDate(e.target.value)} />
@@ -358,7 +358,7 @@ function AnswerComposer({
   };
 
   return (
-    <div className="space-y-3 rounded-xl bg-paper p-4 dark:bg-night-900">
+    <div className="space-y-3 rounded-xl bg-desk-bg p-4 dark:bg-slate-900">
       <Field
         label={editing ? 'Answer message' : 'Your answer'}
         hint={`${message.trim().length}/2000 · covers every outcome: "Ready, collect it after 2pm", "Not issued: fee receipt missing", or "Fill in the attached form and upload it back".`}
@@ -366,7 +366,7 @@ function AnswerComposer({
         <Textarea rows={4} value={message} onChange={(e) => setMessage(e.target.value)} />
       </Field>
       <div className="flex flex-wrap items-center gap-3">
-        <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-ink/10 bg-white px-3.5 py-2 text-sm font-medium text-ink transition hover:border-ink/20 dark:border-white/10 dark:bg-night-800 dark:text-stone-100">
+        <label className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-desk-ink/10 bg-white px-3.5 py-2 text-sm font-medium text-desk-ink transition hover:border-desk-ink/20 dark:border-white/10 dark:bg-slate-800 dark:text-stone-100">
           <Icon name="plus" className="h-4 w-4" />
           {file ? file.name : req.document ? 'Replace document' : 'Attach document (optional)'}
           <input
@@ -380,9 +380,9 @@ function AnswerComposer({
             }}
           />
         </label>
-        <span className="text-xs text-ink/45 dark:text-stone-500">PDF or DOCX, up to 10 MB</span>
+        <span className="text-xs text-desk-ink/45 dark:text-stone-500">PDF or DOCX, up to 10 MB</span>
         {editing && req.document ? (
-          <label className="flex cursor-pointer items-center gap-2 text-sm text-ink/65 dark:text-stone-300">
+          <label className="flex cursor-pointer items-center gap-2 text-sm text-desk-ink/65 dark:text-stone-300">
             <input
               type="checkbox"
               checked={removeDoc}
@@ -393,7 +393,7 @@ function AnswerComposer({
               className="h-4 w-4 accent-red-600"
             />
             Remove current document
-            <span className="text-xs text-ink/40">(also removes the filled form)</span>
+            <span className="text-xs text-desk-ink/40">(also removes the filled form)</span>
           </label>
         ) : null}
       </div>
@@ -486,21 +486,21 @@ export function StaffDetail({
             <Avatar name={req.requested_by_name} />
             <div>
               <div className="flex flex-wrap items-center gap-2">
-                <h2 className="font-display text-2xl font-semibold tracking-tight text-ink dark:text-white">
+                <h2 className="font-display text-2xl font-semibold tracking-tight text-desk-ink dark:text-white">
                   {req.doc_type_name}
                 </h2>
                 <StatusPill status={req.status} />
               </div>
-              <div className="mt-0.5 text-sm text-ink/55 dark:text-stone-400">
+              <div className="mt-0.5 text-sm text-desk-ink/55 dark:text-stone-400">
                 {req.requested_by_name} · {req.requested_by_role}
                 {req.requested_by_dept ? ` · ${req.requested_by_dept}` : ''} · {req.requested_by_phone_number}
               </div>
               <div className="mt-1.5 flex flex-wrap items-center gap-2">
                 <TatBadge req={req} />
-                <span className="text-xs text-ink/40 dark:text-stone-500">
+                <span className="text-xs text-desk-ink/40 dark:text-stone-500">
                   Requested {toIST(req.created_at)}
                 </span>
-                <span className="font-mono text-[11px] text-ink/35 dark:text-stone-500">{req.request_id}</span>
+                <span className="font-mono text-[11px] text-desk-ink/35 dark:text-stone-500">{req.request_id}</span>
               </div>
             </div>
           </div>
@@ -509,16 +509,16 @@ export function StaffDetail({
         <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
           <div className="space-y-5">
             <div>
-              <h3 className="mb-3 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+              <h3 className="mb-3 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                 Progress
               </h3>
               <RequestTimeline req={req} />
             </div>
             <div>
-              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                 Requester's reason
               </h3>
-              <p className="rounded-xl bg-paper px-4 py-3 text-sm leading-relaxed text-ink/75 dark:bg-night-900 dark:text-stone-300">
+              <p className="rounded-xl bg-desk-bg px-4 py-3 text-sm leading-relaxed text-desk-ink/75 dark:bg-slate-900 dark:text-stone-300">
                 {req.reason}
               </p>
             </div>
@@ -527,14 +527,14 @@ export function StaffDetail({
           <div className="space-y-5">
             {pending || (answered && req.tat) ? (
               <div>
-                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                   Turnaround time
                 </h3>
                 {pending ? (
                   <TatForm req={req} onSaved={saved} />
                 ) : req.tat ? (
-                  <div className="flex items-center justify-between gap-3 rounded-xl bg-paper px-4 py-3 text-sm dark:bg-night-900">
-                    <span className="text-ink/70 dark:text-stone-300">
+                  <div className="flex items-center justify-between gap-3 rounded-xl bg-desk-bg px-4 py-3 text-sm dark:bg-slate-900">
+                    <span className="text-desk-ink/70 dark:text-stone-300">
                       Due <span className="font-semibold">{req.tat.expected_by}</span>
                       {req.tat.note ? ` — ${req.tat.note}` : ''}
                     </span>
@@ -546,7 +546,7 @@ export function StaffDetail({
 
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <h3 className="text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+                <h3 className="text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                   Answer
                 </h3>
                 {answered ? (
@@ -556,9 +556,9 @@ export function StaffDetail({
                 ) : null}
               </div>
               {closed ? (
-                <div className="rounded-xl border border-ivy-600/20 bg-ivy-50 px-4 py-3 text-sm dark:border-ivy-400/20 dark:bg-ivy-400/5">
-                  <p className="leading-relaxed text-ink/80 dark:text-stone-200">{req.answer?.message}</p>
-                  <p className="mt-2 text-xs text-ink/50 dark:text-stone-400">
+                <div className="rounded-xl border border-indigo-600/20 bg-indigo-50 px-4 py-3 text-sm dark:border-indigo-400/20 dark:bg-indigo-400/5">
+                  <p className="leading-relaxed text-desk-ink/80 dark:text-stone-200">{req.answer?.message}</p>
+                  <p className="mt-2 text-xs text-desk-ink/50 dark:text-stone-400">
                     Closed — the answer can no longer be changed.
                   </p>
                 </div>
@@ -569,7 +569,7 @@ export function StaffDetail({
 
             {req.filled_form ? (
               <div>
-                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                   Filled form from requester
                 </h3>
                 <div className="flex items-center justify-between gap-3 rounded-xl border border-violet-500/25 bg-violet-50 px-4 py-3 dark:bg-violet-400/10">
@@ -579,7 +579,7 @@ export function StaffDetail({
                     </span>
                     <div className="min-w-0">
                       <Badge tone="violet">Returned for verification</Badge>
-                      <div className="mt-0.5 truncate text-sm font-medium text-ink dark:text-white">
+                      <div className="mt-0.5 truncate text-sm font-medium text-desk-ink dark:text-white">
                         {req.filled_form.filename}
                       </div>
                     </div>

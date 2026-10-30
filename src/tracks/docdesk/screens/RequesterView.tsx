@@ -144,7 +144,7 @@ function Catalog({ onRequested }: { onRequested: () => void }) {
     return (
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Loading">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="h-44 animate-pulse rounded-2xl bg-ink/5 dark:bg-white/5" />
+          <div key={i} className="h-44 animate-pulse rounded-2xl bg-desk-ink/5 dark:bg-white/5" />
         ))}
       </div>
     );
@@ -177,11 +177,11 @@ function Catalog({ onRequested }: { onRequested: () => void }) {
               <ModuleIcon module="docdesk" />
               <Badge tone="ivy">Available</Badge>
             </div>
-            <h3 className="mt-3 font-display text-lg font-semibold tracking-tight text-ink dark:text-white">
+            <h3 className="mt-3 font-display text-lg font-semibold tracking-tight text-desk-ink dark:text-white">
               {t.name}
             </h3>
             {t.description ? (
-              <p className="mt-1 flex-1 text-sm leading-relaxed text-ink/60 dark:text-stone-400">
+              <p className="mt-1 flex-1 text-sm leading-relaxed text-desk-ink/60 dark:text-stone-400">
                 {t.description}
               </p>
             ) : (
@@ -214,26 +214,26 @@ function RequestRow({ req, onOpen }: { req: DocRequest; onOpen: () => void }) {
   return (
     <button
       onClick={onOpen}
-      className="block w-full cursor-pointer rounded-2xl border border-ink/8 bg-white p-4 text-left shadow-card transition-all duration-200 hover:-translate-y-px hover:shadow-lift dark:border-white/8 dark:bg-night-800"
+      className="block w-full cursor-pointer rounded-2xl border border-desk-ink/8 bg-white p-4 text-left shadow-desk transition-all duration-200 hover:-translate-y-px hover:shadow-desk-lg dark:border-white/8 dark:bg-slate-800"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="font-display text-[17px] font-semibold tracking-tight text-ink dark:text-white">
+            <span className="font-display text-[17px] font-semibold tracking-tight text-desk-ink dark:text-white">
               {req.doc_type_name}
             </span>
             <StatusPill status={req.status} />
           </div>
-          <p className="mt-1 truncate text-sm text-ink/55 dark:text-stone-400">{req.reason}</p>
+          <p className="mt-1 truncate text-sm text-desk-ink/55 dark:text-stone-400">{req.reason}</p>
         </div>
-        <Icon name="chevR" className="h-5 w-5 shrink-0 text-ink/30 dark:text-stone-500" />
+        <Icon name="chevR" className="h-5 w-5 shrink-0 text-desk-ink/30 dark:text-stone-500" />
       </div>
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <TatBadge req={req} />
         <Badge tone="slate">
           <Icon name="calendar" className="h-3 w-3" /> {toISTDate(req.created_at)}
         </Badge>
-        <span className="font-mono text-[11px] text-ink/35 dark:text-stone-500">
+        <span className="font-mono text-[11px] text-desk-ink/35 dark:text-stone-500">
           {req.request_id}
         </span>
       </div>
@@ -312,16 +312,16 @@ function FileRow({
   deleting?: boolean;
 }) {
   return (
-    <div className="flex items-center justify-between gap-3 rounded-xl border border-ink/8 bg-paper px-4 py-3 dark:border-white/8 dark:bg-night-900">
+    <div className="flex items-center justify-between gap-3 rounded-xl border border-desk-ink/8 bg-desk-bg px-4 py-3 dark:border-white/8 dark:bg-slate-900">
       <div className="flex min-w-0 items-center gap-3">
         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-violet-100 text-violet-700 dark:bg-violet-400/15 dark:text-violet-300">
           <Icon name="fileText" className="h-4 w-4" />
         </span>
         <div className="min-w-0">
-          <div className="text-[11px] font-bold tracking-wider text-ink/45 uppercase dark:text-stone-500">
+          <div className="text-[11px] font-bold tracking-wider text-desk-ink/45 uppercase dark:text-stone-500">
             {label}
           </div>
-          <div className="truncate text-sm font-medium text-ink dark:text-white">{filename}</div>
+          <div className="truncate text-sm font-medium text-desk-ink dark:text-white">{filename}</div>
         </div>
       </div>
       <div className="flex shrink-0 gap-2">
@@ -447,15 +447,15 @@ export function RequesterDetail({
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <h2 className="font-display text-2xl font-semibold tracking-tight text-ink dark:text-white">
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-desk-ink dark:text-white">
                 {req.doc_type_name}
               </h2>
               <StatusPill status={req.status} />
             </div>
-            <div className="mt-1.5 flex flex-wrap items-center gap-2 text-sm text-ink/55 dark:text-stone-400">
+            <div className="mt-1.5 flex flex-wrap items-center gap-2 text-sm text-desk-ink/55 dark:text-stone-400">
               <TatBadge req={req} />
               <span>Requested {toIST(req.created_at)}</span>
-              <span className="font-mono text-[11px] text-ink/35 dark:text-stone-500">
+              <span className="font-mono text-[11px] text-desk-ink/35 dark:text-stone-500">
                 {req.request_id}
               </span>
             </div>
@@ -481,31 +481,31 @@ export function RequesterDetail({
 
         <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
           <div>
-            <h3 className="mb-3 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+            <h3 className="mb-3 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
               Progress
             </h3>
             <RequestTimeline req={req} />
           </div>
           <div className="space-y-4">
             <div>
-              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                 Your reason
               </h3>
-              <p className="rounded-xl bg-paper px-4 py-3 text-sm leading-relaxed text-ink/75 dark:bg-night-900 dark:text-stone-300">
+              <p className="rounded-xl bg-desk-bg px-4 py-3 text-sm leading-relaxed text-desk-ink/75 dark:bg-slate-900 dark:text-stone-300">
                 {req.reason}
               </p>
             </div>
 
             {req.answer ? (
               <div>
-                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                   Answer from Student Affairs
                 </h3>
-                <div className="rounded-xl border border-ivy-600/20 bg-ivy-50 px-4 py-3 dark:border-ivy-400/20 dark:bg-ivy-400/5">
-                  <p className="text-sm leading-relaxed text-ink/80 dark:text-stone-200">
+                <div className="rounded-xl border border-indigo-600/20 bg-indigo-50 px-4 py-3 dark:border-indigo-400/20 dark:bg-indigo-400/5">
+                  <p className="text-sm leading-relaxed text-desk-ink/80 dark:text-stone-200">
                     {req.answer.message}
                   </p>
-                  <p className="mt-2 text-xs text-ink/50 dark:text-stone-400">
+                  <p className="mt-2 text-xs text-desk-ink/50 dark:text-stone-400">
                     {req.answer.answered_by_name} · {toIST(req.answer.answered_at)}
                   </p>
                 </div>
@@ -522,7 +522,7 @@ export function RequesterDetail({
             ) : null}
 
             <div>
-              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                 Filled form
               </h3>
               {req.filled_form ? (
@@ -539,8 +539,8 @@ export function RequesterDetail({
                   deleting={busy === 'delete-filled'}
                 />
               ) : canFill ? (
-                <label className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-dashed border-ink/20 px-4 py-4 transition hover:border-ivy-500 hover:bg-ivy-50/50 dark:border-white/15 dark:hover:border-ivy-400 dark:hover:bg-ivy-400/5">
-                  <span className="text-sm text-ink/60 dark:text-stone-400">
+                <label className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-dashed border-desk-ink/20 px-4 py-4 transition hover:border-indigo-500 hover:bg-indigo-50/50 dark:border-white/15 dark:hover:border-indigo-400 dark:hover:bg-indigo-400/5">
+                  <span className="text-sm text-desk-ink/60 dark:text-stone-400">
                     {busy === 'upload'
                       ? 'Uploading…'
                       : 'Fill in the document (or photograph the paper form) and upload it back — PDF, DOCX, JPG or PNG, up to 10 MB.'}
@@ -550,7 +550,7 @@ export function RequesterDetail({
                       busy === 'upload'
                         ? 'cursor-not-allowed opacity-50'
                         : ''
-                    } border border-ink/10 bg-white text-ink shadow-card hover:-translate-y-px hover:bg-cream hover:shadow-lift dark:border-white/10 dark:bg-night-800 dark:text-stone-100 dark:hover:bg-night-700`}
+                    } border border-desk-ink/10 bg-white text-desk-ink shadow-desk hover:-translate-y-px hover:bg-indigo-50 hover:shadow-desk-lg dark:border-white/10 dark:bg-slate-800 dark:text-stone-100 dark:hover:bg-slate-700`}
                   >
                     <Icon name="plus" className="h-4 w-4" /> Upload
                   </span>
@@ -567,7 +567,7 @@ export function RequesterDetail({
                   />
                 </label>
               ) : (
-                <p className="rounded-xl bg-paper px-4 py-3 text-sm text-ink/50 dark:bg-night-900 dark:text-stone-400">
+                <p className="rounded-xl bg-desk-bg px-4 py-3 text-sm text-desk-ink/50 dark:bg-slate-900 dark:text-stone-400">
                   {req.status === 'pending'
                     ? 'You can upload the filled form once Student Affairs answers with a document.'
                     : 'This answer has no document to fill in.'}

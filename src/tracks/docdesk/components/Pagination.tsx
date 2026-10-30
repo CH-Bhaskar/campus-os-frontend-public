@@ -22,7 +22,7 @@ export function Pagination({
       <Button variant="secondary" size="sm" onClick={onPrev} disabled={!hasPrev}>
         <Icon name="arrowL" className="h-4 w-4" /> Back
       </Button>
-      <span className="rounded-full bg-ink/5 px-3 py-1 text-xs font-medium text-ink/50 dark:bg-white/10 dark:text-stone-400">
+      <span className="rounded-full bg-desk-ink/5 px-3 py-1 text-xs font-medium text-desk-ink/50 dark:bg-white/10 dark:text-stone-400">
         {nextCursor ? 'More pages available' : 'End of list'}
       </span>
       <Button variant="secondary" size="sm" onClick={onNext} disabled={!nextCursor}>

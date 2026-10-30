@@ -1,8 +1,7 @@
-
 /**
- * CampusOS design system primitives.
- * Teammates: build module pages with these so every lane looks like one product.
- * (Buttons, inputs, cards, badges, headings — light + dark ready.)
+ * DocDesk design system primitives — College Documents Desk visual language.
+ * Same component API as before (props/names unchanged); only the styling
+ * was re-skinned. Light + dark ready, scoped to the DocDesk track.
  */
 import type {
   ButtonHTMLAttributes,
@@ -176,6 +175,26 @@ const PATHS = {
       <path d="M3 10h18" />
     </>
   ),
+  download: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M12 15V3" />
+    </>
+  ),
+  upload: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m17 8-5-5-5 5" />
+      <path d="M12 3v12" />
+    </>
+  ),
+  bell: (
+    <>
+      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+      <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+    </>
+  ),
 } as const;
 
 export type IconName = keyof typeof PATHS;
@@ -209,23 +228,23 @@ type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'brass';
 type ButtonSize = 'sm' | 'md' | 'lg';
 
 const BTN_BASE =
-  'inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl font-semibold whitespace-nowrap transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ivy-500 focus-visible:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50';
+  'inline-flex cursor-pointer items-center justify-center gap-2 rounded-full font-semibold whitespace-nowrap transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-desk-primary focus-visible:ring-offset-2 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50';
 
 const BTN_VARIANTS: Record<ButtonVariant, string> = {
   primary:
-    'bg-ivy-700 text-white shadow-card hover:-translate-y-px hover:bg-ivy-800 hover:shadow-lift dark:bg-ivy-400 dark:text-ivy-950 dark:hover:bg-ivy-300',
+    'bg-desk-navy text-white shadow-desk hover:bg-desk-ink dark:bg-indigo-500 dark:hover:bg-indigo-400',
   secondary:
-    'border border-ink/10 bg-white text-ink shadow-card hover:-translate-y-px hover:bg-cream hover:shadow-lift dark:border-white/10 dark:bg-night-800 dark:text-stone-100 dark:hover:bg-night-700',
+    'border border-slate-200 bg-white text-desk-ink shadow-desk hover:bg-slate-50 dark:border-white/10 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700',
   ghost:
-    'text-ink/65 hover:bg-ink/5 hover:text-ink dark:text-stone-300 dark:hover:bg-white/5 dark:hover:text-white',
+    'text-slate-500 hover:bg-white hover:text-desk-ink dark:text-slate-400 dark:hover:bg-white/5 dark:hover:text-white',
   danger:
-    'bg-red-600 text-white shadow-card hover:-translate-y-px hover:bg-red-700 dark:bg-red-500/90 dark:hover:bg-red-500',
+    'bg-rose-600 text-white shadow-desk hover:bg-rose-700 dark:bg-rose-500/90 dark:hover:bg-rose-500',
   brass:
-    'bg-brass-500 text-ivy-950 shadow-glow hover:-translate-y-px hover:bg-brass-400',
+    'bg-amber-400 text-desk-navy shadow-desk hover:bg-amber-300 dark:bg-amber-400 dark:hover:bg-amber-300',
 };
 
 const BTN_SIZES: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1.5 text-[13px]',
+  sm: 'px-3.5 py-1.5 text-[13px]',
   md: 'px-5 py-2.5 text-sm',
   lg: 'px-6 py-3 text-[15px]',
 };
@@ -250,7 +269,7 @@ export function Button({
 /* ---------------- Form controls ---------------- */
 
 export const INPUT_CLS =
-  'w-full rounded-xl border border-ink/10 bg-white px-3.5 py-2.5 text-sm text-ink shadow-[inset_0_1px_2px_rgb(16_24_20/0.04)] transition outline-none placeholder:text-ink/35 hover:border-ink/20 focus:border-ivy-500 focus:ring-4 focus:ring-ivy-500/15 dark:border-white/10 dark:bg-night-800 dark:text-stone-100 dark:placeholder:text-stone-500 dark:hover:border-white/20';
+  'w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-desk-ink shadow-[inset_0_1px_2px_rgb(30_27_75/0.04)] transition outline-none placeholder:text-slate-400 hover:border-slate-300 focus:border-desk-primary focus:ring-2 focus:ring-desk-primary/50 dark:border-white/10 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500';
 
 export function Input({
   className = '',
@@ -278,7 +297,7 @@ export function Select({
       </select>
       <Icon
         name="chevD"
-        className="pointer-events-none absolute top-1/2 right-3.5 h-4 w-4 -translate-y-1/2 text-ink/40 dark:text-stone-400"
+        className="pointer-events-none absolute top-1/2 right-3.5 h-4 w-4 -translate-y-1/2 text-slate-400"
       />
     </span>
   );
@@ -299,13 +318,13 @@ export function Field({
     <div>
       <label
         htmlFor={htmlFor}
-        className="text-[13px] font-semibold text-ink/75 dark:text-stone-200"
+        className="text-xs font-semibold text-desk-ink dark:text-slate-200"
       >
         {label}
       </label>
       <div className="mt-1.5">{children}</div>
       {hint ? (
-        <p className="mt-1.5 text-xs leading-relaxed text-ink/50 dark:text-stone-400">{hint}</p>
+        <p className="mt-1.5 text-xs leading-relaxed text-slate-400 dark:text-slate-500">{hint}</p>
       ) : null}
     </div>
   );
@@ -320,9 +339,7 @@ export function Card({
 }: React.HTMLAttributes<HTMLDivElement> & { hover?: boolean }) {
   return (
     <div
-      className={`rounded-2xl border border-ink/8 bg-white shadow-card dark:border-white/8 dark:bg-night-800 ${
-        hover ? 'transition-all duration-200 hover:-translate-y-1 hover:shadow-lift' : ''
-      } ${className}`}
+      className={`card-desk ${hover ? 'lift' : ''} ${className}`}
       {...props}
     />
   );
@@ -341,17 +358,16 @@ type BadgeTone =
   | 'slate';
 
 const BADGE_TONES: Record<BadgeTone, string> = {
-  ivy: 'bg-ivy-100 text-ivy-800 dark:bg-ivy-400/15 dark:text-ivy-300',
-  brass: 'bg-brass-100 text-brass-800 dark:bg-brass-400/15 dark:text-brass-300',
-  sky: 'bg-sky-100 text-sky-800 dark:bg-sky-400/15 dark:text-sky-300',
-  violet: 'bg-violet-100 text-violet-800 dark:bg-violet-400/15 dark:text-violet-300',
-  amber: 'bg-amber-100 text-amber-800 dark:bg-amber-400/15 dark:text-amber-300',
-  orange: 'bg-orange-100 text-orange-800 dark:bg-orange-400/15 dark:text-orange-300',
-  rose: 'bg-rose-100 text-rose-800 dark:bg-rose-400/15 dark:text-rose-300',
-  red: 'bg-red-100 text-red-700 dark:bg-red-400/15 dark:text-red-300',
-  emerald: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-400/15 dark:text-emerald-300',
-  slate:
-    'bg-ink/5 text-ink/70 dark:bg-white/10 dark:text-stone-300',
+  ivy: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-400/15 dark:text-indigo-300',
+  brass: 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300',
+  sky: 'bg-sky-100 text-sky-700 dark:bg-sky-400/15 dark:text-sky-300',
+  violet: 'bg-violet-100 text-violet-700 dark:bg-violet-400/15 dark:text-violet-300',
+  amber: 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300',
+  orange: 'bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300',
+  rose: 'bg-rose-100 text-rose-700 dark:bg-rose-400/15 dark:text-rose-300',
+  red: 'bg-rose-100 text-rose-700 dark:bg-rose-400/15 dark:text-rose-300',
+  emerald: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300',
+  slate: 'bg-slate-100 text-slate-600 dark:bg-white/10 dark:text-slate-300',
 };
 
 export function Badge({
@@ -361,7 +377,7 @@ export function Badge({
 }: React.HTMLAttributes<HTMLSpanElement> & { tone?: BadgeTone }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap ${BADGE_TONES[tone]} ${className}`}
+      className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-bold whitespace-nowrap ${BADGE_TONES[tone]} ${className}`}
       {...props}
     />
   );
@@ -384,15 +400,15 @@ export function SectionHeading({
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div className="min-w-0">
         {eyebrow ? (
-          <div className="text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+          <div className="text-[11px] font-bold tracking-[0.16em] text-desk-primary uppercase">
             {eyebrow}
           </div>
         ) : null}
-        <h1 className="mt-1 font-display text-[28px] leading-tight font-semibold tracking-tight text-ink dark:text-white">
+        <h1 className="mt-1 font-display text-[28px] leading-tight font-bold tracking-tight text-desk-ink dark:text-white">
           {title}
         </h1>
         {desc ? (
-          <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-ink/60 dark:text-stone-400">
+          <p className="mt-1.5 max-w-xl text-[13px] leading-relaxed text-slate-400 dark:text-slate-500">
             {desc}
           </p>
         ) : null}
@@ -407,15 +423,15 @@ export function SectionHeading({
 export function Logo({ tagline = true }: { tagline?: boolean }) {
   return (
     <span className="flex items-center gap-2.5">
-      <span className="grid h-9 w-9 place-items-center rounded-xl bg-ivy-800 text-brass-300 shadow-card dark:bg-ivy-400 dark:text-ivy-950">
+      <span className="grid h-9 w-9 place-items-center rounded-xl bg-desk-primary text-white shadow-desk">
         <Icon name="cap" className="h-5 w-5" />
       </span>
       <span className="leading-tight">
-        <span className="block font-display text-[19px] font-semibold tracking-tight text-ink dark:text-white">
+        <span className="block font-display text-[19px] font-bold tracking-tight text-desk-ink dark:text-white">
           CampusOS
         </span>
         {tagline ? (
-          <span className="block text-[11px] font-medium text-ink/50 dark:text-stone-400">
+          <span className="block text-[11px] font-medium text-slate-400">
             One campus. One portal.
           </span>
         ) : null}
@@ -434,7 +450,7 @@ export function Avatar({ name, className = '' }: { name?: string; className?: st
       .toUpperCase() || '?';
   return (
     <span
-      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ivy-100 font-display text-sm font-semibold text-ivy-800 ring-1 ring-ivy-900/10 dark:bg-ivy-400/15 dark:text-ivy-300 dark:ring-white/10 ${className}`}
+      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full bg-indigo-100 font-display text-sm font-bold text-desk-primary ring-1 ring-indigo-900/10 dark:bg-indigo-400/15 dark:text-indigo-300 dark:ring-white/10 ${className}`}
       aria-hidden="true"
     >
       {initials}
@@ -448,13 +464,13 @@ export const MODULE_ACCENTS: Record<string, { label: string; icon: IconName; til
   dashboard: {
     label: 'Dashboard',
     icon: 'home',
-    tile: 'bg-ivy-100 text-ivy-700 dark:bg-ivy-400/15 dark:text-ivy-300',
+    tile: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-400/15 dark:text-indigo-300',
     badgeTone: 'ivy',
   },
   users: {
     label: 'Users',
     icon: 'users',
-    tile: 'bg-ivy-100 text-ivy-700 dark:bg-ivy-400/15 dark:text-ivy-300',
+    tile: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-400/15 dark:text-indigo-300',
     badgeTone: 'ivy',
   },
   findit: {

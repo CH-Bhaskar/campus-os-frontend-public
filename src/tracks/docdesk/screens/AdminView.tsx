@@ -70,18 +70,18 @@ function AdminDetail({ requestId, onBack }: { requestId: string; onBack: () => v
           <Avatar name={req.requested_by_name} />
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <h2 className="font-display text-2xl font-semibold tracking-tight text-ink dark:text-white">
+              <h2 className="font-display text-2xl font-semibold tracking-tight text-desk-ink dark:text-white">
                 {req.doc_type_name}
               </h2>
               <StatusPill status={req.status} />
             </div>
-            <div className="mt-0.5 text-sm text-ink/55 dark:text-stone-400">
+            <div className="mt-0.5 text-sm text-desk-ink/55 dark:text-stone-400">
               {req.requested_by_name} · {req.requested_by_role}
               {req.requested_by_dept ? ` · ${req.requested_by_dept}` : ''}
             </div>
             <div className="mt-1.5 flex flex-wrap items-center gap-2">
               <TatBadge req={req} />
-              <span className="text-xs text-ink/40 dark:text-stone-500">
+              <span className="text-xs text-desk-ink/40 dark:text-stone-500">
                 Requested {toIST(req.created_at)}
               </span>
             </div>
@@ -91,21 +91,21 @@ function AdminDetail({ requestId, onBack }: { requestId: string; onBack: () => v
           <RequestTimeline req={req} />
           <div className="space-y-4">
             <div>
-              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+              <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                 Reason
               </h3>
-              <p className="rounded-xl bg-paper px-4 py-3 text-sm leading-relaxed text-ink/75 dark:bg-night-900 dark:text-stone-300">
+              <p className="rounded-xl bg-desk-bg px-4 py-3 text-sm leading-relaxed text-desk-ink/75 dark:bg-slate-900 dark:text-stone-300">
                 {req.reason}
               </p>
             </div>
             {req.answer ? (
               <div>
-                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-brass-600 uppercase dark:text-brass-400">
+                <h3 className="mb-2 text-[11px] font-bold tracking-[0.16em] text-amber-600 uppercase dark:text-amber-400">
                   Answer
                 </h3>
-                <p className="rounded-xl bg-paper px-4 py-3 text-sm leading-relaxed text-ink/75 dark:bg-night-900 dark:text-stone-300">
+                <p className="rounded-xl bg-desk-bg px-4 py-3 text-sm leading-relaxed text-desk-ink/75 dark:bg-slate-900 dark:text-stone-300">
                   {req.answer.message}
-                  <span className="mt-2 block text-xs text-ink/50 dark:text-stone-400">
+                  <span className="mt-2 block text-xs text-desk-ink/50 dark:text-stone-400">
                     {req.answer.answered_by_name} · {toIST(req.answer.answered_at)}
                   </span>
                 </p>
@@ -135,12 +135,12 @@ export function AdminView() {
 
   return (
     <div className="space-y-4">
-      <Card className="flex items-start gap-3 border-brass-500/30 p-4 dark:border-brass-400/30">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brass-100 text-brass-700 dark:bg-brass-400/15 dark:text-brass-300">
+      <Card className="flex items-start gap-3 border-amber-500/30 p-4 dark:border-amber-400/30">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-300">
           <Icon name="shield" className="h-4 w-4" />
         </span>
-        <p className="text-sm leading-relaxed text-ink/65 dark:text-stone-300">
-          <span className="font-semibold text-ink dark:text-white">Read-only access.</span>{' '}
+        <p className="text-sm leading-relaxed text-desk-ink/65 dark:text-stone-300">
+          <span className="font-semibold text-desk-ink dark:text-white">Read-only access.</span>{' '}
           Admins can see every document request, but creating, answering or uploading in DocDesk
           belongs to Student Affairs — those actions return 403 for admins.
         </p>
@@ -167,29 +167,29 @@ export function AdminView() {
           renderItem={(r) => (
             <button
               onClick={() => setSelectedId(r.request_id)}
-              className="block w-full cursor-pointer rounded-2xl border border-ink/8 bg-white p-4 text-left shadow-card transition-all duration-200 hover:-translate-y-px hover:shadow-lift dark:border-white/8 dark:bg-night-800"
+              className="block w-full cursor-pointer rounded-2xl border border-desk-ink/8 bg-white p-4 text-left shadow-desk transition-all duration-200 hover:-translate-y-px hover:shadow-desk-lg dark:border-white/8 dark:bg-slate-800"
             >
               <div className="flex items-center justify-between gap-3">
                 <div className="flex min-w-0 items-center gap-3">
                   <Avatar name={r.requested_by_name} className="h-8 w-8 text-xs" />
                   <div className="min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-display text-[16px] font-semibold tracking-tight text-ink dark:text-white">
+                      <span className="font-display text-[16px] font-semibold tracking-tight text-desk-ink dark:text-white">
                         {r.doc_type_name}
                       </span>
                       <StatusPill status={r.status} />
                     </div>
-                    <div className="truncate text-[13px] text-ink/55 dark:text-stone-400">
+                    <div className="truncate text-[13px] text-desk-ink/55 dark:text-stone-400">
                       {r.requested_by_name} · {r.requested_by_role}
                       {r.requested_by_dept ? ` · ${r.requested_by_dept}` : ''}
                     </div>
                   </div>
                 </div>
-                <Icon name="chevR" className="h-5 w-5 shrink-0 text-ink/30 dark:text-stone-500" />
+                <Icon name="chevR" className="h-5 w-5 shrink-0 text-desk-ink/30 dark:text-stone-500" />
               </div>
               <div className="mt-2.5 flex flex-wrap items-center gap-2 pl-11">
                 <TatBadge req={r} />
-                <span className="text-xs text-ink/40 dark:text-stone-500">{toISTDate(r.created_at)}</span>
+                <span className="text-xs text-desk-ink/40 dark:text-stone-500">{toISTDate(r.created_at)}</span>
               </div>
             </button>
           )}

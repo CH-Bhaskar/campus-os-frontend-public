@@ -182,7 +182,7 @@ export function DocTypesManager() {
       {loading ? (
         <div className="space-y-3" aria-label="Loading">
           {[0, 1, 2].map((i) => (
-            <div key={i} className="h-20 animate-pulse rounded-2xl bg-ink/5 dark:bg-white/5" />
+            <div key={i} className="h-20 animate-pulse rounded-2xl bg-desk-ink/5 dark:bg-white/5" />
           ))}
         </div>
       ) : error ? (
@@ -217,7 +217,7 @@ export function DocTypesManager() {
             <Card key={t.doc_type_id} className="flex items-start justify-between gap-4 p-4">
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-display text-[17px] font-semibold tracking-tight text-ink dark:text-white">
+                  <span className="font-display text-[17px] font-semibold tracking-tight text-desk-ink dark:text-white">
                     {t.name}
                   </span>
                   <Badge tone={t.status === 'active' ? 'ivy' : 'slate'}>
@@ -225,9 +225,9 @@ export function DocTypesManager() {
                   </Badge>
                 </div>
                 {t.description ? (
-                  <p className="mt-1 text-sm text-ink/60 dark:text-stone-400">{t.description}</p>
+                  <p className="mt-1 text-sm text-desk-ink/60 dark:text-stone-400">{t.description}</p>
                 ) : null}
-                <p className="mt-1.5 text-xs text-ink/40 dark:text-stone-500">
+                <p className="mt-1.5 text-xs text-desk-ink/40 dark:text-stone-500">
                   {t.doc_type_id} · updated {toISTDate(t.updated_at)}
                 </p>
               </div>
