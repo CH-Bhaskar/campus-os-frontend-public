@@ -1,0 +1,110 @@
+/* DocDesk track theme — Ivy & Brass design identity.
+ *
+ * Tailwind v4, imported WITHOUT preflight so the starter shell's own styles
+ * are untouched. Only theme tokens + utilities are generated.
+ */
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css";
+
+/* The starter toggles dark mode via data-theme="dark" on <html>;
+ * map it onto the `dark:` variant this track's screens use. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Ivy — primary deep academic green */
+  --color-ivy-50: #f0f7f3;
+  --color-ivy-100: #dcefe4;
+  --color-ivy-200: #bce0cd;
+  --color-ivy-300: #8fc9ab;
+  --color-ivy-400: #5dab85;
+  --color-ivy-500: #388d67;
+  --color-ivy-600: #237455;
+  --color-ivy-700: #1c5c45;
+  --color-ivy-800: #184a39;
+  --color-ivy-900: #123a2e;
+  --color-ivy-950: #082b1d;
+
+  /* Brass — gold accent */
+  --color-brass-50: #fbf8ec;
+  --color-brass-100: #f5edd3;
+  --color-brass-200: #ead9a4;
+  --color-brass-300: #ddc06f;
+  --color-brass-400: #d2a944;
+  --color-brass-500: #c9a227;
+  --color-brass-600: #a98620;
+  --color-brass-700: #876a1c;
+  --color-brass-800: #6f571d;
+  --color-brass-900: #5f4a1d;
+
+  /* Paper & ink (light mode) */
+  --color-paper: #faf8f1;
+  --color-cream: #f1ecdd;
+  --color-ink: #101814;
+
+  /* Night (dark mode surfaces) */
+  --color-night-950: #060c09;
+  --color-night-900: #0a120e;
+  --color-night-800: #101b15;
+  --color-night-700: #1a2921;
+  --color-night-600: #24382d;
+
+  --shadow-card: 0 1px 2px rgb(16 24 20 / 0.05), 0 10px 28px -14px rgb(16 24 20 / 0.14);
+  --shadow-lift: 0 2px 6px rgb(16 24 20 / 0.06), 0 20px 44px -18px rgb(16 24 20 / 0.24);
+  --shadow-glow: 0 0 0 1px rgb(201 162 39 / 0.35), 0 10px 36px -10px rgb(201 162 39 / 0.4);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 11s ease-in-out infinite;
+  --animate-pan: pan 26s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pan {
+    from { background-position: 0 0; }
+    to { background-position: 132px 132px; }
+  }
+}
+
+/* Dot-grid pattern helpers (tinted per usage) */
+@utility bg-dots-light {
+  background-image: radial-gradient(rgb(255 255 255 / 0.16) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+@utility bg-dots-ink {
+  background-image: radial-gradient(rgb(16 24 20 / 0.09) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Track-scoped canvas: paper background + ink text for the DocDesk screens,
+ * without touching the starter shell's global styles. */
+.docdesk-scope {
+  @apply bg-paper font-sans text-ink antialiased dark:bg-night-900 dark:text-stone-100;
+  text-rendering: optimizeLegibility;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.docdesk-scope ::selection {
+  background: var(--color-brass-200);
+}
+[data-theme='dark'] .docdesk-scope ::selection {
+  background: rgb(201 162 39 / 0.4);
+}
+.docdesk-scope input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+.docdesk-scope * {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(28 92 69 / 0.35) transparent;
+}
+.docdesk-scope *::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.docdesk-scope *::-webkit-scrollbar-thumb {
+  background: rgb(28 92 69 / 0.3);
+  border-radius: 8px;
+}
